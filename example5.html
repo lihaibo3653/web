@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            background: #333;
+        }
+        .container{
+            height:560px;
+            width:400px;
+            margin:0 auto;
+        }
+        .box{
+            width:300px;
+        }
+        #title,#bottom{
+            height:30px;
+            background:#000;
+            line-height:30px;
+            text-align: center;
+            color:#fff;
+        }
+        img{
+            width:300px;
+            height:400px;
+            vertical-align: middle;
+        }
+        ul{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .clear{
+            zoom:1;
+        }
+        .clear:after{
+            content: ' ';
+            display:block;
+            clear:both;
+        }
+        li{
+            float:left;
+            width:40px;
+            height:40px;
+            background:#666;
+            margin-right: 4px;
+            cursor: pointer;
+            border:2px solid #ddd;
+            border-radius: 5px;
+            transition:border 1s;
+        }
+        li img{
+            width:100%;
+            height:100%;
+        }
+        li.active{
+            border:2px solid #ffcc33;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div id="title">加载中。。。</div>
+            <div>
+                <img src="js/imgs/1.jpg"/>
+            </div>
+            <div id="bottom"></div>
+        </div>
+        <ul class="clear"></ul>
+    </div>
+</body>
+</html>
+<script>
+    var arrurls = ['js/imgs/1.jpg','js/imgs/2.jpg','js/imgs/3.jpg','js/imgs/4.jpg','js/imgs/5.jpg']
+    var arrTexts = ['image1','image2','image3','image4','image5']
+    var title = document.getElementById('title');
+    var bottom = document.getElementById('bottom');
+    var img = document.getElementsByTagName('img')[0];
+    var ul = document.getElementsByTagName('ul')[0];
+
+    var  small_images_html = '';
+    //显示小图
+    for(var i = 0; i < arrurls.length ; i++)
+    {
+        small_images_html +='<li><img src="' + arrurls[i] + '"></li>';
+    }
+
+    console.log('small_images_html:',small_images_html);
+    ul.innerHTML = small_images_html;
+
+    
+    var old_index = 0;
+
+    var update_fun = function()
+    {
+        old_index += 1;
+        if(old_index >= arrurls.length)
+        {
+            old_index = 0;
+        }
+        var url = arrurls[old_index];
+        var title_string = arrTexts[old_index];
+
+        img.src = url;
+        title.innerHTML = title_string;
+    }
+
+    var interval_id = setInterval(update_fun,1500);
+
+    img.onmouseover = function()
+    {
+        if(interval_id)
+        {
+            clearInterval(interval_id);
+            interval_id = undefined;
+        }
+    }
+
+    img.onmouseout = function()
+    {
+        interval_id = setInterval(update_fun,1500);
+    }
+
+</script>
