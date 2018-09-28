@@ -1,0 +1,26 @@
+<body>
+    <table id="table">
+        <tr>
+            <td>ROW1</td>
+            <td><button onclick="deleteRow(this)" >delete</button></td>
+        </tr>
+        <tr>
+                <td>ROW2</td>
+                <td><button onclick="deleteRow(this)" >delete</button></td>
+            </tr>
+        
+            <tr>
+                    <td>ROW3</td>
+                    <td><button onclick="deleteRow(this)" >delete</button></td>
+                </tr>
+
+    </table>
+</body>
+
+<script>
+    var deleteRow = function(r)
+    {
+        var i = r.parentNode.parentNode.rowIndex;
+        document.getElementById('table').deleteRow(i);
+    }
+</script>
