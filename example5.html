@@ -91,15 +91,37 @@
     console.log('small_images_html:',small_images_html);
     ul.innerHTML = small_images_html;
 
+
+    var lis = document.getElementsByTagName('li');
+
+    var update_big_image = function(index)
+    {
+        var current_index  = index;
+        return function()
+        {
+            console.log('select image :',current_index);
+            update_fun(current_index);
+        }
+    }
+
+    for(var i = 0 ; i < lis.length ; ++i)
+    {
+        lis[i].onclick = update_big_image(i);
+    }
     
     var old_index = 0;
 
-    var update_fun = function()
+    var update_fun = function(select_index)
     {
-        old_index += 1;
-        if(old_index >= arrurls.length)
+        if(select_index == undefined)
         {
-            old_index = 0;
+            old_index += 1;
+            if(old_index >= arrurls.length)
+            {
+                old_index = 0;
+            }
+        }else{
+            old_index = select_index;
         }
         var url = arrurls[old_index];
         var title_string = arrTexts[old_index];
@@ -108,7 +130,7 @@
         title.innerHTML = title_string;
     }
 
-    var interval_id = setInterval(update_fun,1500);
+    var interval_id = setInterval(update_fun,5500);
 
     img.onmouseover = function()
     {
@@ -121,7 +143,7 @@
 
     img.onmouseout = function()
     {
-        interval_id = setInterval(update_fun,1500);
+        interval_id = setInterval(update_fun,5500);
     }
 
 </script>
