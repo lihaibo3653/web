@@ -1,0 +1,41 @@
+<body>
+
+    <div id="ele_id">
+        0
+    </div>
+
+
+    <div class="ele_class">
+
+    </div>
+
+    <button onclick="start_fun()">start</button>
+    <button onclick="stop_fun()">stop</button>
+
+</body>
+
+<script>
+    var ele_id = document.getElementById('ele_id');
+    var ele_class = document.getElementsByClassName('ele_class');
+
+    console.log('ele_id:',ele_id,'ele_class:',ele_class);
+    var inter_id = undefined;
+    var start_fun = function()
+    {
+        inter_id = setInterval(function(){
+                var counter = parseInt(ele_id.innerHTML);
+                counter += 1;
+                ele_id.innerHTML = counter ;
+        },1000);
+    }
+
+    var stop_fun = function()
+    {
+        if(inter_id)
+        {
+            clearInterval(inter_id);
+            inter_id = undefined;
+        }
+    }
+
+</script>
