@@ -1,0 +1,48 @@
+<script>
+
+    var f = function()
+    {
+        var a = 1;
+    }
+
+    console.log('a:',a);
+
+    var arr = [];
+    for(var i = 0 ; i < 3 ; ++i)
+    {
+        arr[i] = function()
+        {
+            console.log('i:',i);
+        }
+    }
+    arr[0]();
+    arr[1]();
+    arr[2]();
+
+    var a = 1;
+
+    var os = 'windows';
+
+    function O(name)
+    {
+        this.name = name;
+
+        this.show1 = function()
+        {
+            console.log('name:',this.name);
+        }
+
+        this.show2 = function(){
+            return function(){
+                console.log('name:',this.name);
+            }
+        }
+    }
+
+    var o = new O('mac');
+    o.show1();
+    o.show2()();
+
+
+
+</script>
