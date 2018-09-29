@@ -23,9 +23,9 @@
                     </div>
                     <form class="ui reply form">
                       <div class="field">
-                        <textarea></textarea>
+                        <textarea id="comment_content" onChange="update_submit_button()"></textarea>
                       </div>
-                      <div class="ui primary submit labeled icon button">
+                      <div id="submit_button" class="ui primary submit labeled icon button">
                         <i class="icon edit"></i> Add Reply
                       </div>
                     </form>
@@ -42,5 +42,26 @@
 </body>
 
 <script>
+
+    var submit_button = document.getElementById('submit_button');
+
+    var update_submit_button = function()
+    {
+        var comment_content = document.getElementById("comment_content").value;
+        if(comment_content && comment_content.length > 0)
+        {
+            submit_button.classList.remove('disabled');
+        }else{
+            submit_button.classList.add('disabled');
+        }
+    }
+
+    
+    submit_button.onclick = function()
+    {
+
+    }
+
+    update_submit_button();
 
 </script>
