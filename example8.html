@@ -1,0 +1,58 @@
+<head>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+</head>
+
+        
+<form class="ui form" action="/" method="POST" onsubmit="return on_submit()">
+
+        <div class="field">
+          <label>First Name</label>
+          <input id="first_name_input" type="text" name="first-name" placeholder="First Name">
+        </div>
+
+        <div class="field">
+                <label>Password</label>
+                <input id="password_input" type="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="field">
+          <div class="ui checkbox">
+            <input id="checkbox_input" type="checkbox" tabindex="0" class="hidden">
+            <label>I agree to the Terms and Conditions</label>
+          </div>
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+      </form>
+
+
+<script>
+
+    var on_submit = function()
+    {
+        console.log('on submit event trigger');
+        var first_name_input = document.getElementById('first_name_input');
+        if(first_name_input.value.length < 4)
+        {
+            alert('first name must > 4');
+            return false;
+        }
+        
+        var password_input = document.getElementById('password_input');
+        if(password_input.value.length < 8)
+        {
+            alert('password must > 8');
+            return false;
+        }
+        
+        var checkbox_input = document.getElementById('checkbox_input');
+        if(!checkbox_input.checked)
+        {
+            alert('checkbox must select');
+            return false;
+        }
+        return true;
+    }
+
+</script>
