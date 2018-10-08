@@ -55,4 +55,13 @@
         return true;
     }
 
+    var $ = function(name)
+    {
+        var new_name = name.substring(1,name.length);
+        return document.getElementById(new_name);
+    }
+    var e = $('#checkbox_input');
+
+    console.log('e:',e);
+
 </script>
