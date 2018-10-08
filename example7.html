@@ -52,6 +52,7 @@
                 </div>
                 <div class="actions">
                   <a class="reply active">Reply</a>
+                  <a class="delete active" onclick="on_reply_delete(this)">Delete</a>
                 </div>
         </div>
 </div>
@@ -77,13 +78,20 @@
         }
     }
 
+    //删除评论
+    var on_reply_delete = function(delete_button)
+    {
+        var content_ele = delete_button.parentElement.parentElement;
+        console.log('content_ele:',content_ele);
+        content_ele.parentNode.removeChild(content_ele);
+    }
+  
     
     submit_button.onclick = function()
     {
         var comment_content_string = comment_content.value;
         
         var new_comment = document.createElement('div');
-        
     
         var clone_comment_item = document.getElementById('clone_comment_item');
         //获取需要拷贝的评论html元素
@@ -95,12 +103,11 @@
 
         comment_text.innerHTML = comment_content_string;
 
-
-
         var comments_container = document.getElementById('comments_container');
         var before_content = comments_container.querySelector('.content')[0];
         comments_container.insertBefore(need_clone_comment_item,comments_container.firstChild);
 
+        comment_content.value = '';
     }
 
     update_submit_button();
