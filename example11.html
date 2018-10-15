@@ -1,0 +1,25 @@
+<script>
+
+    var a = function()
+    {
+        console.log('a:',a);
+    }
+
+
+    var b = function()
+    {
+        console.log('b:',b);
+        a();
+    }
+
+
+    var c = function()
+    {
+        console.log('c:',c);
+        b();
+    }
+
+    c();
+    
+
+</script>

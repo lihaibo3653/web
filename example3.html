@@ -1,7 +1,8 @@
 <body>
-<p id='js'>
-Javascript
-</p>
+    <p id='js'>
+    Javascript
+    </p>
+
 <div id="list">
 <p id="python">Python</p>
 <p id="cpp">CPP</p>
@@ -10,8 +11,26 @@ Javascript
 </body>
 
 <script>
-    var javascript_html_string = "<p id='javascript'>Javascript</p>";
-    var js = document.getElementById('js');
+    //var javascript_html_string = "<p id='javascript'>Javascript</p>";
     var list = document.getElementById('list');
+
+    var go = document.createElement('p');
+    go.id = "go";
+    go.innerText = "go";
+    list.appendChild(go);
+
+
+    var php = document.createElement('p');
+    php.id = "php";
+    php.innerText = "php";
+    //将元素php插入到go元素的后面
+    list.insertBefore(php,go);
+
+    var js = document.getElementById('js');
     list.appendChild(js);
+
+    //获取python元素节点
+    var python = document.getElementById('python');
+    //通过找到父节点删除元素
+    python.parentNode.removeChild(python);
 </script>
